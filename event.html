@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Object Example</title>
+  </head>
+  <body>
+    <p>Rizwan Ejaz</p>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+      const saydate = function () {
+        console.log("hi", Date.now());
+      };
+
+      const saystop = function () {
+        console.log("stopped");
+        clearInterval(intervalId);
+      };
+
+      let intervalId;
+
+      document.getElementById("start").addEventListener("click", function() {
+        // To prevent multiple intervals if start is clicked multiple times
+        if (!intervalId) {
+          intervalId = setInterval(saydate, 1000);
+        }
+      });
+
+      document.getElementById("stop").addEventListener("click", function() {
+        saystop();
+        intervalId = null; // Reset the intervalId after stopping
+      });
+    </script>
+</body>
+
+  </body>
+</html>
